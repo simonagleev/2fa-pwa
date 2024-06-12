@@ -2,7 +2,7 @@ import { Breadcrumbs, FieldType, IOption, One, TypedField } from "react-declarat
 
 import IAuthToken from "../../model/IAuthToken";
 import QRCode from "react-qr-code";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import ioc from "../../lib/ioc";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
@@ -71,9 +71,18 @@ export const QrPage = ({
           handler={data}
           onChange={handleChange}
         />
-        {!!data && (
-          <QRCode value={data.href}/>
-        )}
+        <Box sx={{ display: 'flex' }}>
+          {!!data && (
+            <Box 
+              sx={{
+                padding: '15px',
+                background: 'white',
+              }}
+            >
+              <QRCode value={data.href}/>
+            </Box>
+          )}
+        </Box>
       </Stack>
     </>
   );
